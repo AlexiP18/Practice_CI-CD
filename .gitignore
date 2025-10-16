@@ -1,0 +1,50 @@
+# Dependencias
+node_modules/
+package-lock.json
+npm-debug.log*
+yarn.lock
+pnpm-lock.yaml
+
+# Build / artefactos
+dist/
+build/
+coverage/
+.tmp/
+.temp/
+
+# Entornos/credenciales
+.env
+.env.*
+*.pem
+*.key
+*.crt
+*.pub
+*.p12
+*.pfx
+
+# Logs
+logs/
+*.log
+npm-cache/
+
+# Sistemas/editores
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# PM2 / runtime
+.pids
+*.pid
+*.seed
+dump.rdb
+
+# Docker (si usas)
+docker-data/
+**/.docker
+**/.dockerignore
+
+# Tests
+.junit/
+.tap/
