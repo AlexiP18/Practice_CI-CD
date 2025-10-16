@@ -1,5 +1,5 @@
 const request = require("supertest");
-const app = require("../src/index");
+const app = require("../src/app"); // ¡no importes server!
 
 describe("GET /hello", () => {
   it("debe responder con ok true", async () => {
@@ -8,3 +8,4 @@ describe("GET /hello", () => {
     expect(res.body.ok).toBe(true);
   });
 });
+

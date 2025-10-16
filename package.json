@@ -4,8 +4,8 @@
   "main": "src/index.js",
   "type": "commonjs",
   "scripts": {
-    "start": "node src/index.js",
-    "test": "jest --runInBand",
+    "start": "node src/server.js",
+    "test": "NODE_ENV=test jest --runInBand --detectOpenHandles --verbose",
     "lint": "echo \"(opcional) ejecuta eslint\" && exit 0"
   },
   "dependencies": {

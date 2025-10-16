@@ -23,6 +23,8 @@ jobs:
 
       - name: Run tests
         run: npm test
+        env:
+          NODE_ENV: test
 
   cd:
     runs-on: ubuntu-latest
