@@ -14,8 +14,16 @@ describe("Health & Root Endpoints", () => {
   });
 
   describe("GET /", () => {
-    it("debe retornar información de la API", async () => {
+    it("debe servir la interfaz web", async () => {
       const res = await request(app).get("/");
+      expect(res.statusCode).toBe(200);
+      expect(res.type).toMatch(/html/);
+    });
+  });
+
+  describe("GET /api-info", () => {
+    it("debe retornar información de la API", async () => {
+      const res = await request(app).get("/api-info");
       expect(res.statusCode).toBe(200);
       expect(res.body.ok).toBe(true);
       expect(res.body.message).toBeDefined();

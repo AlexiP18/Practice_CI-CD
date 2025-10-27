@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CI/CD Demo App - Dashboard</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-rocket"></i>
+                <h1>CI/CD Demo App</h1>
+            </div>
+            <nav class="nav">
+                <a href="#dashboard" class="nav-link active">
+                    <i class="fas fa-home"></i> Dashboard
+                </a>
+                <a href="#users" class="nav-link">
+                    <i class="fas fa-users"></i> Users
+                </a>
+                <a href="#api" class="nav-link">
+                    <i class="fas fa-code"></i> API Test
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section active">
+            <div class="container">
+                <h2 class="section-title">
+                    <i class="fas fa-chart-line"></i> Dashboard
+                </h2>
+                
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon health">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Server Status</h3>
+                            <p id="server-status" class="stat-value">Loading...</p>
+                            <span class="stat-label">Health Check</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon uptime">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Uptime</h3>
+                            <p id="uptime" class="stat-value">--</p>
+                            <span class="stat-label">Seconds</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon users">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Total Users</h3>
+                            <p id="user-count" class="stat-value">--</p>
+                            <span class="stat-label">Registered</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon requests">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>API Version</h3>
+                            <p class="stat-value">v1.0.0</p>
+                            <span class="stat-label">Latest</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Section -->
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <h3><i class="fas fa-chart-line"></i> Server Uptime History</h3>
+                        <canvas id="uptimeChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3><i class="fas fa-chart-pie"></i> User Activity</h3>
+                        <canvas id="userActivityChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <h3><i class="fas fa-chart-bar"></i> API Requests</h3>
+                        <canvas id="requestsChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3><i class="fas fa-tachometer-alt"></i> Response Times</h3>
+                        <canvas id="responseTimeChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Features -->
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-shield-alt feature-icon"></i>
+                        <h3>Secure</h3>
+                        <p>Helmet & CORS protection</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-bug feature-icon"></i>
+                        <h3>Tested</h3>
+                        <p>89.81% code coverage</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-docker feature-icon"></i>
+                        <h3>Containerized</h3>
+                        <p>Docker ready deployment</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-cog feature-icon"></i>
+                        <h3>CI/CD</h3>
+                        <p>Automated pipeline</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Users Section -->
+        <section id="users" class="section">
+            <div class="container">
+                <h2 class="section-title">
+                    <i class="fas fa-users"></i> User Management
+                </h2>
+
+                <!-- Add User Form -->
+                <div class="card">
+                    <h3><i class="fas fa-user-plus"></i> Add New User</h3>
+                    <form id="add-user-form" class="form">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" id="user-name" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" id="user-email" placeholder="john@example.com" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-plus"></i> Add User
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Users List -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-list"></i> Users List</h3>
+                        <button onclick="loadUsers()" class="btn btn-secondary">
+                            <i class="fas fa-sync"></i> Refresh
+                        </button>
+                    </div>
+                    <div id="users-list" class="users-list">
+                        <p class="loading">Loading users...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- API Test Section -->
+        <section id="api" class="section">
+            <div class="container">
+                <h2 class="section-title">
+                    <i class="fas fa-code"></i> API Testing
+                </h2>
+
+                <div class="api-grid">
+                    <!-- Health Check -->
+                    <div class="card">
+                        <h3><i class="fas fa-heartbeat"></i> Health Check</h3>
+                        <div class="api-test">
+                            <code class="endpoint">GET /health</code>
+                            <button onclick="testEndpoint('/health')" class="btn btn-test">
+                                <i class="fas fa-play"></i> Test
+                            </button>
+                        </div>
+                        <pre id="response-health" class="response-box"></pre>
+                    </div>
+
+                    <!-- Hello Endpoint -->
+                    <div class="card">
+                        <h3><i class="fas fa-comment"></i> Hello</h3>
+                        <div class="api-test">
+                            <code class="endpoint">GET /api/hello</code>
+                            <button onclick="testEndpoint('/api/hello')" class="btn btn-test">
+                                <i class="fas fa-play"></i> Test
+                            </button>
+                        </div>
+                        <pre id="response-hello" class="response-box"></pre>
+                    </div>
+
+                    <!-- Personalized Hello -->
+                    <div class="card">
+                        <h3><i class="fas fa-user"></i> Personalized Hello</h3>
+                        <div class="api-test">
+                            <input type="text" id="hello-name" placeholder="Your name" class="api-input">
+                            <button onclick="testHelloName()" class="btn btn-test">
+                                <i class="fas fa-play"></i> Test
+                            </button>
+                        </div>
+                        <pre id="response-hello-name" class="response-box"></pre>
+                    </div>
+
+                    <!-- Get All Users -->
+                    <div class="card">
+                        <h3><i class="fas fa-users"></i> Get All Users</h3>
+                        <div class="api-test">
+                            <code class="endpoint">GET /api/users</code>
+                            <button onclick="testEndpoint('/api/users')" class="btn btn-test">
+                                <i class="fas fa-play"></i> Test
+                            </button>
+                        </div>
+                        <pre id="response-users" class="response-box"></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 CI/CD Demo App - Built with Express.js</p>
+            <div class="footer-links">
+                <a href="https://github.com/AlexiP18/Practice_CI-CD" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/app.js"></script>
+</body>
+</html>

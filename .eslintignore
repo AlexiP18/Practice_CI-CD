@@ -1,0 +1,14 @@
+# Ignorar archivos de frontend
+public/
+public/**/*.js
+public/**/*.css
+
+# Ignorar node_modules
+node_modules/
+
+# Ignorar coverage
+coverage/
+
+# Ignorar logs
+*.log
+logs/
