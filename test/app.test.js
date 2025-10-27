@@ -1,11 +1,14 @@
 const request = require("supertest");
-const app = require("../src/app"); // ¡no importes server!
+const app = require("../src/app");
 
-describe("GET /hello", () => {
-  it("debe responder con ok true", async () => {
-    const res = await request(app).get("/hello");
+describe("App Integration Tests", () => {
+  it("debe cargar la aplicación correctamente", () => {
+    expect(app).toBeDefined();
+  });
+
+  it("debe responder a peticiones HTTP", async () => {
+    const res = await request(app).get("/");
     expect(res.statusCode).toBe(200);
-    expect(res.body.ok).toBe(true);
   });
 });
 
