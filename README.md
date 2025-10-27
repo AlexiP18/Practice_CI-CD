@@ -5,6 +5,7 @@
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
 Una aplicación Node.js/Express completa con CI/CD implementado usando GitHub Actions y deployment a DigitalOcean. Este proyecto sirve como ejemplo profesional de las mejores prácticas en desarrollo, testing y deployment automatizado.
+Nueva Prueba
 
 ## 📋 Tabla de Contenidos
 
