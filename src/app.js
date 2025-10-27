@@ -9,15 +9,16 @@ const routes = require("./routes");
 
 const app = express();
 
-// Seguridad con configuración para permitir inline scripts de la UI
+// Seguridad con configuración para permitir inline scripts de la UI y CDNs
 app.use(helmet({
   contentSecurityPolicy: {
     directives: {
       defaultSrc: ["'self'"],
       styleSrc: ["'self'", "'unsafe-inline'", "https://cdnjs.cloudflare.com"],
-      scriptSrc: ["'self'", "'unsafe-inline'"],
+      scriptSrc: ["'self'", "'unsafe-inline'", "https://cdn.jsdelivr.net", "https://cdnjs.cloudflare.com"],
       fontSrc: ["'self'", "https://cdnjs.cloudflare.com"],
-      imgSrc: ["'self'", "data:", "https:"]
+      imgSrc: ["'self'", "data:", "https:"],
+      connectSrc: ["'self'"]
     }
   }
 }));
