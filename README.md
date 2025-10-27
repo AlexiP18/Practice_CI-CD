@@ -13,7 +13,6 @@ Una aplicación Node.js/Express completa con CI/CD implementado usando GitHub Ac
 - [Requisitos Previos](#-requisitos-previos)
 - [Instalación](#-instalación)
 - [Uso](#-uso)
-- [Interfaz Web y Gráficos](#-interfaz-web-y-gráficos)
 - [Testing](#-testing)
 - [Docker](#-docker)
 - [CI/CD](#-cicd)
@@ -26,8 +25,6 @@ Una aplicación Node.js/Express completa con CI/CD implementado usando GitHub Ac
 ## ✨ Características
 
 - ✅ **API RESTful** con Express.js
-- ✅ **Interfaz Web Gráfica** con Dashboard interactivo y gráficos en tiempo real
-- ✅ **Gráficos Dinámicos** con Chart.js (Uptime, Requests, Response Times, User Activity)
 - ✅ **Testing Completo** con Jest y Supertest (89.81% coverage)
 - ✅ **Logging Profesional** con Winston
 - ✅ **Seguridad** con Helmet y CORS
@@ -37,14 +34,11 @@ Una aplicación Node.js/Express completa con CI/CD implementado usando GitHub Ac
 - ✅ **Health Checks** para monitoreo
 - ✅ **Manejo de Errores** centralizado
 - ✅ **Hot Reload** en desarrollo con Nodemon
-- ✅ **UI Responsive** optimizada para desktop, tablet y móvil
 
 ## 🛠 Tecnologías
 
 - **Runtime:** Node.js 18+
 - **Framework:** Express.js
-- **Frontend:** HTML5, CSS3, JavaScript (Vanilla)
-- **Gráficos:** Chart.js v4.4.0
 - **Testing:** Jest + Supertest
 - **Logging:** Winston
 - **Seguridad:** Helmet, CORS
@@ -92,11 +86,11 @@ npm run dev
 ```
 Inicia el servidor con nodemon en modo desarrollo (hot reload activado).
 
-**Accede a la interfaz web:**
-- 🌐 **Dashboard:** http://localhost:3000
-- 📊 **Gráficos en tiempo real:** Incluidos en el Dashboard
+**Endpoints disponibles:**
+- 🌐 **Root:** http://localhost:3000
 - 🩺 **Health Check:** http://localhost:3000/health
-- 📝 **API Info:** http://localhost:3000/api-info
+- � **API Users:** http://localhost:3000/api/users
+- 👋 **API Hello:** http://localhost:3000/api/hello
 
 ### Producción
 ```bash
@@ -108,67 +102,6 @@ Inicia el servidor en modo producción.
 ```bash
 curl http://localhost:3000/health
 ```
-
-## 📊 Interfaz Web y Gráficos
-
-La aplicación incluye una **interfaz web moderna y profesional** con dashboard interactivo.
-
-### 🎨 Características de la UI
-
-#### **Dashboard Principal**
-- 📈 **4 Gráficos en Tiempo Real** actualizados automáticamente
-- 📊 **Estadísticas del Servidor** (Status, Uptime, Users, Version)
-- 🎯 **Cards de Features** con animaciones
-- 🌈 **Diseño moderno** con gradientes y efectos visuales
-
-#### **Gestión de Usuarios**
-- ➕ **Agregar usuarios** mediante formulario
-- 📋 **Lista de usuarios** con información detallada
-- ✏️ **Editar usuarios** con diálogos interactivos
-- 🗑️ **Eliminar usuarios** con confirmación
-- 🔄 **Refresh manual** de la lista
-
-#### **API Testing**
-- 🧪 **Probar endpoints** directamente desde la UI
-- 📝 **Ver respuestas JSON** en tiempo real
-- 💡 **Ejemplos interactivos** de cada endpoint
-- ⚡ **Sin necesidad de Postman o curl**
-
-### 📊 Gráficos Incluidos
-
-1. **Server Uptime History** 📈
-   - Tipo: Línea
-   - Muestra: Historial de tiempo activo
-   - Actualización: Cada 5 segundos
-
-2. **User Activity** 🥧
-   - Tipo: Dona (Doughnut)
-   - Muestra: Distribución de usuarios
-   - Segmentos: Activos / Total / Invitados
-
-3. **API Requests** 📊
-   - Tipo: Barras
-   - Muestra: Peticiones por método HTTP
-   - Métodos: GET, POST, PUT, DELETE
-
-4. **Response Times** ⚡
-   - Tipo: Línea
-   - Muestra: Tiempos de respuesta
-   - Rango: 20-100ms
-
-### 🎯 Acceso a la UI
-
-**Local:**
-```
-http://localhost:3000
-```
-
-**Producción (DigitalOcean):**
-```
-http://TU_IP_PUBLICA:3000
-```
-
-> 📖 **Documentación completa de gráficos:** Ver [GRAPHICS.md](./GRAPHICS.md)
 
 ## 🧪 Testing
 

@@ -14,22 +14,15 @@ describe("Health & Root Endpoints", () => {
   });
 
   describe("GET /", () => {
-    it("debe servir la interfaz web", async () => {
+    it("debe retornar información de la API", async () => {
       const res = await request(app).get("/");
       expect(res.statusCode).toBe(200);
-      expect(res.type).toMatch(/html/);
+      expect(res.body.ok).toBe(true);
+      expect(res.body.message).toBe("Mi App CI/CD - API funcionando correctamente");
+      expect(res.body.version).toBe("1.0.0");
     });
   });
 
-  describe("GET /api-info", () => {
-    it("debe retornar información de la API", async () => {
-      const res = await request(app).get("/api-info");
-      expect(res.statusCode).toBe(200);
-      expect(res.body.ok).toBe(true);
-      expect(res.body.message).toBeDefined();
-      expect(res.body.endpoints).toBeDefined();
-    });
-  });
 
   describe("GET /nonexistent", () => {
     it("debe retornar 404 para rutas inexistentes", async () => {
